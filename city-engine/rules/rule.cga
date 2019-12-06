@@ -1,0 +1,44 @@
+/**
+ * File:    rule.cga
+ * Created: 6 Dec 2019 03:30:42 GMT
+ * Author:  gq
+ */
+
+version "2019.1"
+
+
+# case rand() > 0.5: obj_type = "Square"
+# else: obj_type = "Circular"
+
+# if rand() > 0.5
+
+
+# obj_type = "Square"
+
+# obj_type = "Circular"
+
+attr obj_type = 50% :  "Circular"
+			else : "Square"
+
+obj_width = 7
+obj_height = 8
+obj_length = 9
+
+
+Lot -->
+	case obj_type == "Square" : Square
+	case obj_type == "Circular" : Circular
+	else : print(1)
+
+Square -->
+	primitiveQuad(obj_width, obj_length)
+	extrude(obj_height)
+	color(1, 1, 0)
+	print(2)
+
+Circular -->
+	primitiveDisk(30, obj_width)
+	extrude(obj_height)
+	color(1, 1, 0)
+	print(3)
+
